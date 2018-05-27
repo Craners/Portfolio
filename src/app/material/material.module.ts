@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageComponent } from './image.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [ImageComponent]
+  declarations: [
+    MatDividerModule
+  ]
 })
-export class ImageModule { }
+export class MaterialModule { }
