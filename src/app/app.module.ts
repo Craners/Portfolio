@@ -6,6 +6,7 @@ import { ImageComponent } from './image/image.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatGridListModule,MatGridTile} from '@angular/material/grid-list';
+import { GithubService } from "./github.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {MatGridListModule,MatGridTile} from '@angular/material/grid-list';
     MatDividerModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [GithubService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
