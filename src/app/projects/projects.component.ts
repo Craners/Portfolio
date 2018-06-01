@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GithubService } from "../github.service";
+import { GithubService } from '../github.service';
 import { Projects } from '../gitProject';
 
 @Component({
@@ -9,26 +9,24 @@ import { Projects } from '../gitProject';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects:Projects[];
-  username:string;
+  projects: Projects[];
+  username: string;
 
 
-  constructor(private _githubService:GithubService) { }
+  constructor(private _githubService: GithubService) { }
 
   ngOnInit() {
 
-    this.username = "codacy20";
+    this.username = 'codacy20';
+    this.getProjects(this.username);
+  }
 
-    this._githubService
-    .subscribe(() => {
-      this.getProjects(this.username);
+  public getProjects(username: string) {
+    this._githubService.getProject(username).subscribe((data) => {
+      // this.projects = data;
+      // here's where you map your data or whatever
+      console.log('DATA', this.projects);
     });
   }
 
-  getProjects(username: string) {
-    this._githubService.projects(username)
-      .subscribe(res => {
-        this.projects = res;
-      });
-  }
 }

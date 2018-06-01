@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { ImageComponent } from './image/image.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatGridListModule,MatGridTile} from '@angular/material/grid-list';
-import { GithubService } from "./github.service";
+import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
+import { GithubService } from './github.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectsComponent } from './projects/projects.component';
 
