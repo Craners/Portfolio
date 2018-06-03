@@ -24,9 +24,19 @@ export class ProjectsComponent implements OnInit {
   public getProjects(username: string) {
     this._githubService.getProject(username).subscribe((data) => {
       this.projects = data;
-      // here's where you map your data or whatever
-      console.log('DATA', this.projects);
+      this.projects.forEach(element => {
+        var x = this.getLanguage(this.username,element.full_name);
+        // element.language.push("x");
+        console.log(x);
+        
+      });
+      console.log(this.projects);
     });
   }
-
+  public getLanguage(username: string, name:string) {
+    this._githubService.getLanguages(username,name).subscribe((data) => {
+      return data;
+      // console.log(this.projects);
+    });
+  }
 }

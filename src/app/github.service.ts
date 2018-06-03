@@ -15,7 +15,12 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://myproxi.herokuapp.com/` + `https://api.github.com/users/${username}/repos`,
+    return this.http.get(`https://api.github.com/users/${username}/repos`,
+      { responseType: 'json' });
+  }
+
+  getLanguages(username: string, name: string): Observable<any> {
+    return this.http.get(`https://api.github.com/repos/${name}/languages`,
       { responseType: 'json' });
   }
 }
