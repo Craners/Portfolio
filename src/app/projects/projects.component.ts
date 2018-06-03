@@ -12,31 +12,36 @@ export class ProjectsComponent implements OnInit {
   projects: Projects[];
   username: string;
 
-
   constructor(private _githubService: GithubService) { }
 
   ngOnInit() {
 
     this.username = 'codacy20';
-    this.getProjects(this.username);
+    // this.getProjects(this.username);
+    this.getProjects2(this.username);
   }
 
   public getProjects(username: string) {
     this._githubService.getProject(username).subscribe((data) => {
       this.projects = data;
-      this.projects.forEach(element => {
-        var x = this.getLanguage(this.username,element.full_name);
-        // element.language.push("x");
-        console.log(x);
-        
-      });
+      // this.projects.forEach(element => {
+      //   this.getLanguage(this.username, element.full_name);
+      // });
       console.log(this.projects);
     });
   }
-  public getLanguage(username: string, name:string) {
-    this._githubService.getLanguages(username,name).subscribe((data) => {
+  public getLanguage(username: string, name: string) {
+    this._githubService.getLanguages(username, name).subscribe((data) => {
+      // console.log(data);
       return data;
-      // console.log(this.projects);
+    });
+  }
+
+  getProjects2(username: string) {
+    this._githubService.getProject2(username).subscribe((data) => {
+      console.log(data);
+      
+      return data;
     });
   }
 }
