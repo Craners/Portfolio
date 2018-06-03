@@ -4,7 +4,8 @@ import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'social-links', 
-  templateUrl:'./social-links.component.html'
+  templateUrl:'./social-links.component.html',
+  styleUrls:['./social-links.component.css']
 })
 
 export class SocialLinksComponent implements OnInit {
@@ -36,6 +37,10 @@ export class SocialLinksComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    socialBtnNavTo(link: string){
+        window.location.href = link;
     }
   
 }
