@@ -1,5 +1,6 @@
 export interface Projects {
-    href: string;
-    id: string;
-    name: string;
+    full_name: string;
+    updated_at: string;
+    language: string;
+    
   }

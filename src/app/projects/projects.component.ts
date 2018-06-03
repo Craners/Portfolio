@@ -23,7 +23,7 @@ export class ProjectsComponent implements OnInit {
 
   public getProjects(username: string) {
     this._githubService.getProject(username).subscribe((data) => {
-      // this.projects = data;
+      this.projects = data;
       // here's where you map your data or whatever
       console.log('DATA', this.projects);
     });
