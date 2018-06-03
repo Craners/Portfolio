@@ -1,0 +1,26 @@
+<!-- 
+<mat-divider></mat-divider>
+<mat-list *ngFor="let project of projects">
+  <mat-list-item> {{project.name}} ........................... {{project.updated_at | date:'MMM yyyy'}} {{project.language}}</mat-list-item>
+</mat-list> -->
+
+<mat-table mat-table [dataSource]="projects">
+
+  <ng-container matColumnDef="Repo">
+    <mat-header-cell *matHeaderCellDef> Repo </mat-header-cell>
+    <mat-cell *matCellDef="let project"> {{project.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Updated">
+    <mat-header-cell *matHeaderCellDef> Last updated </mat-header-cell>
+    <mat-cell *matCellDef="let project"> {{project.updated_at | date: 'MMM yyyy'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Languages">
+    <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
+    <mat-cell *matCellDef="let project"> {{project.language}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
