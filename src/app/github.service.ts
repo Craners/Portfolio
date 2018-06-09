@@ -27,16 +27,16 @@ export class GithubService {
   }
 
   getProjectsWithLanguages(username: string): Observable<any[]> {
-    return this.http.get(`https://api.github.com/users/${username}/repos`,  { responseType: 'json' })
+    return this.getProject(username)
       .map((res: any) => {
-        console.log(res, "res");
+        console.log(res, "response");
         return res;
       })
       .flatMap((projects: any[]) => {
         if (projects.length > 0) {
           return Observable.forkJoin(
             projects.map((project: any) => {
-              return this.http.get(`https://api.github.com/repos/${username}/` + project.name + `/languages`,  { responseType: 'json' })
+              return this.getLanguages(username, project.name)
                 .map((res: any) => {
                   let languages: any = res;
                   project.languages = Object.keys(languages);
