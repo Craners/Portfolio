@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github.service';
-import { Projects } from '../gitProject';
+import { Project } from '../gitProject';
 
 @Component({
   selector: 'app-projects',
@@ -9,7 +9,7 @@ import { Projects } from '../gitProject';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects: Projects[];
+  projects: Project[];
   username: string;
 
 

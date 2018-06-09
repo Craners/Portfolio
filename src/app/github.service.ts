@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/publishLast';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/of';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,38 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://myproxi.herokuapp.com/` + `https://api.github.com/users/${username}/repos`,
+    return this.http.get(`https://api.github.com/users/${username}/repos`,
       { responseType: 'json' });
   }
+
+  getLanguages(username: string, repo: string): Observable<any> {
+    return this.http.get(`https://api.github.com/repos/${username}/${repo}/languages`,
+      { responseType: 'json' });
+  }
+
+  getProjectsWithLanguages(username: string): Observable<any[]> {
+    return this.http.get(`https://api.github.com/users/${username}/repos`,  { responseType: 'json' })
+      .map((res: any) => {
+        console.log(res, "res");
+        return res;
+      })
+      .flatMap((projects: any[]) => {
+        if (projects.length > 0) {
+          return Observable.forkJoin(
+            projects.map((project: any) => {
+              return this.http.get(`https://api.github.com/repos/${username}/` + project.name + `/languages`,  { responseType: 'json' })
+                .map((res: any) => {
+                  let languages: any = res;
+                  project.languages = Object.keys(languages);
+                  return project;
+                });
+            })
+          );
+        }
+        return Observable.of([]);
+      });
+  }
+
 }
+
+

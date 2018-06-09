@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ImageComponent } from './image/image.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { Project3Component } from './project3/project3.component';
 
 /**
  * Services
@@ -20,13 +21,17 @@ import {MatGridListModule,MatGridTile} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageComponent,
     SocialLinksComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    Project3Component
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,10 @@ import {HttpClientModule} from '@angular/common/http';
     MatGridListModule,
     MatIconModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatListModule,
+    MatChipsModule
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]

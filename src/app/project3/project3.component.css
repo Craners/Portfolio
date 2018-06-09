@@ -1,0 +1,75 @@
+projectCard {
+    margin-bottom: 10px !important;
+}
+
+.projectContainer {
+    margin: 40px 40px;
+}
+
+.projectContainer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.projectContainer ui:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 100%;
+    border: 1px dashed #000;
+}
+
+.projectContainer ul li {
+    margin: 50px 60px;
+    position: relative;
+}
+
+.projectContainer ul li>span {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60px;
+    width: 0px;
+    height: 100%;
+    border: 1px solid #000;
+}
+
+.projectContainer ul li>span:before, .projectContainer ul li>span:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 2px solid #000;
+    position: absolute;
+    border-radius: 50%;
+    left: -7px;
+    background: #fff;
+}
+
+.projectContainer ul li>span:before {
+    top: -10px;
+}
+
+.projectContainer ul li>span:after {
+    top: 100%;
+}
+
+.projectContainer ul li .itme span {
+    position: absolute;
+    font-size: 12px;
+    left: -105px;
+    width: 30px;
+    text-align: right;
+    color: #777;
+}
+
+.projectContainer ul li .itme span:first-child {
+    top: -12px;
+}
+
+.projectContainer ul li .itme span:last-child {
+    top: 100%;
+}
