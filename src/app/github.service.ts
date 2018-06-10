@@ -17,12 +17,17 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${username}/repos?access_token=40dce72277f03666c0ab9c63b8943a6efcd7fa3d`,
+    return this.http.get(`https://api.github.com/users/${username}/repos?sort=updated&type=all&access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
       { responseType: 'json' });
   }
 
-  getLanguages(username: string, repo: string): Observable<any> {
-    return this.http.get(`https://api.github.com/repos/${username}/${repo}/languages?access_token=40dce72277f03666c0ab9c63b8943a6efcd7fa3d`,
+  getLanguages(repo: string): Observable<any> {
+    return this.http.get(`https://api.github.com/repos/${repo}/languages?access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
+      { responseType: 'json' });
+  }
+
+  getContributors(repo: string): Observable<any> {
+    return this.http.get(`https://api.github.com/repos/${repo}/contributors?access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
       { responseType: 'json' });
   }
 
@@ -36,7 +41,7 @@ export class GithubService {
         if (projects.length > 0) {
           return Observable.forkJoin(
             projects.map((project: any) => {
-              return this.getLanguages(username, project.name)
+              return this.getLanguages(project.full_name)
                 .map((res: any) => {
                   let languages: any = res;
                   project.languages = Object.keys(languages);
@@ -46,6 +51,30 @@ export class GithubService {
           );
         }
         return Observable.of([]);
-      });
+      })
+      .flatMap((projects: any[]) => {
+        if (projects.length > 0) {
+          return Observable.forkJoin(
+            projects.map((project: any) => {
+              return this.getContributors(project.full_name)
+                .map((res: any) => {
+                  let contributors: any = res;
+                  project.contributors = [];
+                  if (contributors.length > 1) {
+                    // these statements execute
+                    contributors.forEach(function (element,index) {
+                      // console.log(element.login);
+                      project.contributors.push(element.login);
+                      // project.contributors[index] = (element.login);
+                    });
+                  }
+                  // project.contributors = contributors[0].login;
+                  return project;
+                });
+            })
+          );
+        }
+        return Observable.of([]);
+      })
   }
 }
