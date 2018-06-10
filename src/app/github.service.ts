@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/publishLast';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/mergeMap';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/of';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +17,35 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${username}/repos?access_token=35c49d659a438696d010add63bf88b2c9e6254a9`,
+    return this.http.get(`https://api.github.com/users/${username}/repos?access_token=40dce72277f03666c0ab9c63b8943a6efcd7fa3d`,
       { responseType: 'json' });
   }
 
-  getLanguages(username: string, name: string): Observable<any> {
-    return this.http.get(`https://api.github.com/repos/${name}/languages?access_token=35c49d659a438696d010add63bf88b2c9e6254a9`,
+  getLanguages(username: string, repo: string): Observable<any> {
+    return this.http.get(`https://api.github.com/repos/${username}/${repo}/languages?access_token=40dce72277f03666c0ab9c63b8943a6efcd7fa3d`,
       { responseType: 'json' });
   }
 
-  getProject2(username: string): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${username}/repos?access_token=35c49d659a438696d010add63bf88b2c9e6254a9`,{ responseType: 'json' })
-      .flatMap((projects) => {
-        return this.http.get('https://api.github.com/repos/' + projects[0].full_name + '/languages?access_token=35c49d659a438696d010add63bf88b2c9e6254a9',{ responseType: 'json' })
+  getProjectsWithLanguages(username: string): Observable<any[]> {
+    return this.getProject(username)
+      .map((res: any) => {
+        // console.log(res, "response");
+        return res;
+      })
+      .flatMap((projects: any[]) => {
+        if (projects.length > 0) {
+          return Observable.forkJoin(
+            projects.map((project: any) => {
+              return this.getLanguages(username, project.name)
+                .map((res: any) => {
+                  let languages: any = res;
+                  project.languages = Object.keys(languages);
+                  return project;
+                });
+            })
+          );
+        }
+        return Observable.of([]);
       });
   }
-
 }
