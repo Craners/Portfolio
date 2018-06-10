@@ -15,7 +15,7 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${username}/repos?sort=updated&type=all&access_token=029356b50e87038d52ca1a1e4a852f252571c10d`,
+    return this.http.get(`https://api.github.com/users/${username}/repos?sort=updated&type=all&access_token=9a8a7205027f550a250f617eb8c1fc9d821d68a3`,
       { responseType: 'json' });
   }
 }
