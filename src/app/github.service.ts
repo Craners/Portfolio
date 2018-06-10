@@ -8,6 +8,7 @@ import 'rxjs/add/operator/publishLast';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/of';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,17 +18,17 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(username: string): Observable<any> {
-    return this.http.get(`https://api.github.com/users/${username}/repos?sort=updated&type=all&access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
+    return this.http.get(`https://api.github.com/users/${username}/repos?sort=updated&type=all&access_token=${environment.apikey}`,
       { responseType: 'json' });
   }
 
   getLanguages(repo: string): Observable<any> {
-    return this.http.get(`https://api.github.com/repos/${repo}/languages?access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
+    return this.http.get(`https://api.github.com/repos/${repo}/languages?access_token=${environment.apikey}`,
       { responseType: 'json' });
   }
 
   getContributors(repo: string): Observable<any> {
-    return this.http.get(`https://api.github.com/repos/${repo}/contributors?access_token=4f8338e04e42af4df7ec8b1692b542962f337852`,
+    return this.http.get(`https://api.github.com/repos/${repo}/contributors?access_token=${environment.apikey}`,
       { responseType: 'json' });
   }
 
