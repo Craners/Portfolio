@@ -63,7 +63,7 @@ export class GithubService {
                   project.contributors = [];
                   if (contributors.length > 1) {
                     // these statements execute
-                    contributors.forEach(function (element,index) {
+                    contributors.forEach(function (element, index) {
                       // console.log(element.login);
                       project.contributors.push(element.login);
                       // project.contributors[index] = (element.login);
