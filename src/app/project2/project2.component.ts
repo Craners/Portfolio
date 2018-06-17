@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github.service';
-import { Projects } from '../gitProject';
+import { Project } from '../gitProject';
 import { DataSource } from '@angular/cdk/collections';
 
 @Component({
@@ -10,8 +10,8 @@ import { DataSource } from '@angular/cdk/collections';
 })
 export class Project2Component implements OnInit {
 
-  projects: Projects[];
-  displayedColumns = ["Repo", "Updated", "Languages"];
+  projects: Project[];
+  displayedColumns = ["Repo", "Updated", "Languages", "Link"];
   username: string;
 
   constructor(private _githubService: GithubService) { }
@@ -19,15 +19,12 @@ export class Project2Component implements OnInit {
   ngOnInit() {
 
     this.username = 'radualex';
-    this.getProjects(this.username);
+    this.getProjectsWithLanguages(this.username);
   }
 
-  public getProjects(username: string) {
-    this._githubService.getProject(username).subscribe((data) => {
+  public getProjectsWithLanguages(username: string) {
+    return this._githubService.getProjectsWithLanguages(username).subscribe((data) => {      
       this.projects = data;
-      // here's where you map your data or whatever
-      //console.log('DATA', this.projects[0].updated_at);
     });
-
   }
 }

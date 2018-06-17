@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github.service';
-import { Projects } from '../gitProject';
+import { Project } from '../gitProject';
 
 @Component({
   selector: 'app-projects',
@@ -9,23 +9,21 @@ import { Projects } from '../gitProject';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects: Projects[];
+  projects: Project[];
   username: string;
-
 
   constructor(private _githubService: GithubService) { }
 
   ngOnInit() {
 
     this.username = 'codacy20';
-    this.getProjects(this.username);
+    this.getProjectsWithLanguages(this.username);
   }
 
-  public getProjects(username: string) {
-    this._githubService.getProject(username).subscribe((data) => {
+  public getProjectsWithLanguages(username: string) {
+    return this._githubService.getProjectsWithLanguages(username).subscribe((data) => {
+      console.log(data);
       this.projects = data;
-      // here's where you map your data or whatever
-      console.log('DATA', this.projects);
     });
   }
 

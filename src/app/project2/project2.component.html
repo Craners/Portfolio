@@ -20,8 +20,13 @@
       </ng-container>
 
       <ng-container matColumnDef="Languages">
-        <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
-        <mat-cell *matCellDef="let project"> {{project.language}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> Languages </mat-header-cell>
+        <mat-cell *matCellDef="let project"> {{project.languages}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Link">
+        <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
+        <mat-cell *matCellDef="let project"> <a target="_blank" [href]="project.html_url"><mat-icon>launch</mat-icon></a> </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

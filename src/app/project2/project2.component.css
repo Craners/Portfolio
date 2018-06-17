@@ -4,9 +4,13 @@ mat-table
     height: 100%;
 }
 
+mat-grid-list
+{
+    height: calc(75vh) !important;
+}
+
 mat-grid-tile 
 {
-    height: calc(100vh - 24px) !important;
     align-content: center !important;
 }
 
@@ -20,4 +24,18 @@ mat-cell{
     display:flex;
     justify-content:center;
   }
+
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+
   
