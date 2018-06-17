@@ -4,11 +4,16 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
+  },
+  "engines": {
+    "node": "8.11.2",
+    "npm": "5.6.0"
   },
   "private": true,
   "dependencies": {
@@ -24,10 +29,13 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
     "font-awesome": "^4.7.0",
     "material-design-icons": "^3.0.1",
+    "path": "^0.12.7",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",
+    "typescript": "2.7.2",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
