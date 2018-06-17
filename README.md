@@ -1,4 +1,4 @@
-[![Heroku](https://heroku-badge.herokuapp.com/?app=spotifyers)]
+![Heroku](https://heroku-badge.herokuapp.com/?app=spotifyers)
 
 # Portfolio
 
