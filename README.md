@@ -1,4 +1,4 @@
-![Heroku](https://heroku-badge.herokuapp.com/?app=spotifyers)
+[![Build Status](https://travis-ci.org/Craners/Portfolio.svg?branch=master)](https://travis-ci.org/Craners/Portfolio)
 
 # Portfolio
 
