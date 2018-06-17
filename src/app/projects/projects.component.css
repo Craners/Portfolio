@@ -1,8 +1,14 @@
 .example-card {
     max-width: 400px;
+    margin-bottom: 15px;
   }
   
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+.example-header-image {
+    background-image: url('https://api.adorable.io/avatars/285/');
     background-size: cover;
+    border-radius: 20%;
   }
+
+#displayInBlock{
+  display: inline-block;
+}
