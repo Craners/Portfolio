@@ -1,4 +1,4 @@
-<mat-card class="example-card" *ngFor="let item of projects;">
+<!-- <mat-card class="example-card" *ngFor="let item of projects;">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{item.name}}</mat-card-title>
@@ -12,10 +12,69 @@
     <p>{{item.updated_at}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <!-- <button mat-button>LIKE</button> -->
-    <!-- <button mat-button>SHARE</button> -->
-    <div id="displayInBlock">
-      <button mat-button color="primary" *ngFor="let language of item.languages;">{{language}}</button>
+  <div id="displayInBlock">
+      <button  id="nomargin" mat-button color="primary" *ngFor="let language of item.languages;">{{language}}</button>
     </div>
   </mat-card-actions>
-</mat-card>
+</mat-card>  -->
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="timeline">
+    <div *ngFor="let item of projects;let i = index;">
+      <div *ngIf="i%2===0" class="container left">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <img mat-card-avatar class="example-header-image" src="https://api.adorable.io/avatars/{{i}}">
+            <mat-card-title title="Click to see the code">
+              <a class="fontTitle" href="{{item.html_url}}">{{item.name}}</a>
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="item.description">{{item.description}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!item.description">[no description found]</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+
+            </p>
+            <p>{{item.updated_at}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div id="displayInBlock">
+              <button id="nomargin" mat-button color="primary" *ngFor="let language of item.languages;">{{language}}</button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div *ngIf="i%2===1" class="container right">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <img mat-card-avatar class="example-header-image" src="https://api.adorable.io/avatars/{{i}}">
+            <mat-card-title title="Click to see the code">
+              <a class="fontTitle" href="{{item.html_url}}">{{item.name}}</a>
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="item.description">{{item.description}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!item.description">[no description found]</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+
+            </p>
+            <p>{{item.updated_at}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div id="displayInBlock">
+              <button id="nomargin" mat-button color="primary" *ngFor="let language of item.languages;">{{language}}</button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

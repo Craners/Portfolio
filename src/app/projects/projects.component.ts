@@ -11,11 +11,13 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[];
   username: string;
+  list: any[];
 
   constructor(private _githubService: GithubService) { }
 
   ngOnInit() {
 
+    this.list = ["https://api.adorable.io/avatars/285/", "https://api.adorable.io/avatars/286/", "https://api.adorable.io/avatars/287/"];
     this.username = 'codacy20';
     this.getProjectsWithLanguages(this.username);
   }
