@@ -1,37 +1,27 @@
-<!-- 
-<mat-divider></mat-divider>
-<mat-list *ngFor="let project of projects">
-  <mat-list-item> {{project.name}} ........................... {{project.updated_at | date:'MMM yyyy'}} {{project.language}}</mat-list-item>
-</mat-list> -->
-
-<mat-grid-list cols="10" rowHeight="fit">
+<mat-grid-list class="main-grid-list" cols="10" rowHeight="1:5">
   <mat-grid-tile colspan='2'>&nbsp;</mat-grid-tile>
   <mat-grid-tile class="mat-grid-tile-custom" colspan='6'>
-    <mat-table mat-table [dataSource]="projects">
-
-      <ng-container matColumnDef="Repo">
-        <mat-header-cell *matHeaderCellDef> Repo </mat-header-cell>
-        <mat-cell *matCellDef="let project"> {{project.name}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Updated">
-        <mat-header-cell *matHeaderCellDef> Last updated </mat-header-cell>
-        <mat-cell *matCellDef="let project"> {{project.updated_at | date: 'MMM yyyy'}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Languages">
-        <mat-header-cell *matHeaderCellDef> Languages </mat-header-cell>
-        <mat-cell *matCellDef="let project"> {{project.languages}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="Link">
-        <mat-header-cell *matHeaderCellDef> Link </mat-header-cell>
-        <mat-cell *matCellDef="let project"> <a target="_blank" [href]="project.html_url"><mat-icon>launch</mat-icon></a> </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <mat-accordion class="accordion">
+      <mat-expansion-panel *ngFor="let project of projects">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{project.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{project.updated_at | date: "medium"}}
+            <a target="_blank" [href]="project.html_url">
+              <mat-icon>launch</mat-icon>
+            </a>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- content -->
+        <mat-grid-list class="list-languages" cols="3" rowHeight="50px">
+          <mat-grid-tile colspan='1' *ngFor="let language of project.languages">
+            {{language}}
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-grid-tile>
   <mat-grid-tile colspan='2'>&nbsp;</mat-grid-tile>
 </mat-grid-list>
