@@ -1,3 +1,3 @@
-wget https://bintray.com/sobolevn/rpm/rpm -O bintray-sobolevn-rpm.repo
-sudo mv bintray-sobolevn-rpm.repo /etc/yum.repos.d/
-sudo yum install git-secret
+echo "deb https://dl.bintray.com/sobolevn/deb git-secret main" | sudo tee -a /etc/apt/sources.list
+wget -qO - https://api.bintray.com/users/sobolevn/keys/gpg/public.key | sudo apt-key add -
+sudo apt-get update && sudo apt-get install git-secret
