@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "preinstall":"./buildScriptTravis.sh",
+    "preinstall":"sudo ./buildScriptTravis.sh",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
