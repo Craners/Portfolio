@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/observable/of';
 import { environment } from '../environments/environment';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,8 @@ export class GithubService {
         if (projects.length > 0) {
           return Observable.forkJoin(
             projects.map((project: any) => {
+              // let myMoment: moment.Moment = moment(project.updated_at);
+              // project.updated_at = myMoment.format("MMMM Do YYYY, H:MM");
               return this.getLanguages(project.full_name)
                 .map((res: any) => {
                   let languages: any = res;
