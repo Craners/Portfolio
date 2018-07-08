@@ -4,14 +4,10 @@ mat-table
     height: 100%;
 }
 
-mat-grid-list
-{
-    height: calc(75vh) !important;
-}
-
 mat-grid-tile 
 {
     align-content: center !important;
+    overflow: unset;
 }
 
 mat-cell{
@@ -38,4 +34,31 @@ a:hover
 }
 
 
+
+
+/* Accordion stuff */
+
+mat-accordion {
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+}
   
+.accordion {
+    overflow: visible;
+}
+.accordion .mat-expansion-panel-header-title, 
+.accordion .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.accordion .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.list-languages
+{
+    height: 100px;
+}

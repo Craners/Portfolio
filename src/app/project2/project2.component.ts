@@ -18,7 +18,7 @@ export class Project2Component implements OnInit {
 
   ngOnInit() {
 
-    this.username = 'radualex';
+    this.username = 'codacy20';
     this.getProjectsWithLanguages(this.username);
   }
 
