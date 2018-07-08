@@ -1,9 +1,9 @@
 language: node_js
 install: true
 script: 
-wget https://bintray.com/sobolevn/rpm/rpm -O bintray-sobolevn-rpm.repo
+'wget https://bintray.com/sobolevn/rpm/rpm -O bintray-sobolevn-rpm.repo
 sudo mv bintray-sobolevn-rpm.repo /etc/yum.repos.d/
-sudo yum install git-secret
+sudo yum install git-secret'
 deploy:
   provider: heroku
   app: craners-portfolio
