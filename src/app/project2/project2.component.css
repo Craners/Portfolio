@@ -4,12 +4,6 @@ mat-table
     height: 100%;
 }
 
-.main-grid-list
-{
-    /* height: calc(100% - 70px) !important;
-    width: calc(100% - 70px) !important; */
-}
-
 mat-grid-tile 
 {
     align-content: center !important;
