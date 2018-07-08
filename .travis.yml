@@ -1,6 +1,6 @@
 language: node_js
 install: true
-script: /Users/amir.kiumarsi/Documents/projects/Portfolio/buildScriptTravis.sh
+script: sh "/Users/amir.kiumarsi/Documents/projects/Portfolio/buildScriptTravis.sh"
 deploy:
   provider: heroku
   app: craners-portfolio
