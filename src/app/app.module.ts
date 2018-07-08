@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { ImageComponent } from './image/image.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
 import { ProjectsComponent } from './projects/projects.component';
-
+import { Project2Component } from './project2/project2.component';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule, MatTableModule } from '@angular/material';
 /**
  * Services
  */
@@ -28,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     ImageComponent,
     SocialLinksComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    Project2Component
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    MatInputModule,
+    MatTableModule,
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]
