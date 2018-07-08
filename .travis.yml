@@ -1,6 +1,6 @@
 language: node_js
 install: true
-script: git secret reveal
+script: brew install git-secret
 deploy:
   provider: heroku
   app: craners-portfolio
