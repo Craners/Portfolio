@@ -40,7 +40,7 @@ export class SocialLinksComponent implements OnInit {
     }
 
     socialBtnNavTo(link: string){
-        window.location.href = link;
+        window.open(link, "_blank");
     }
   
 }
