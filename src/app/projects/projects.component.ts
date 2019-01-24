@@ -11,19 +11,22 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[];
   username: string;
+  check: boolean;
 
   constructor(private _githubService: GithubService) { }
 
   ngOnInit() {
 
+    this.check = false;
     this.username = 'codacy20';
     this.getProjectsWithLanguages(this.username);
   }
 
   public getProjectsWithLanguages(username: string) {
     return this._githubService.getProjectsWithLanguages(username).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.projects = data;
+      this.check = true;
     });
   }
 

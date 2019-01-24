@@ -188,3 +188,7 @@ a:hover {
 #titleWidth{
   width: 100%;
 }
+
+#load{
+  width: 100px;
+}
