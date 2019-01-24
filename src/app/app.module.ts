@@ -27,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ShowcaseComponent } from './showcase/showcase.component';
+import { BioComponent } from './bio/bio.component';
 
 
 
@@ -36,7 +38,9 @@ import { MatIconModule } from '@angular/material/icon';
     ImageComponent,
     SocialLinksComponent,
     ProjectsComponent,
-    Project2Component
+    Project2Component,
+    ShowcaseComponent,
+    BioComponent
   ],
   imports: [
     BrowserModule,

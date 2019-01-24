@@ -1,6 +1,7 @@
 .social-link-btn button:hover{
     background-color: lightgray;
 } 
-
-
-
+.len{
+    margin-left: 25%;
+    width: 50%;
+}
